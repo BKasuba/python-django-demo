@@ -1,0 +1,21 @@
+<h2>All Cars</h2>
+<table>
+    <tr>
+        <th>Full Name</th>
+        <th>Brand</th>
+        <th>Doors</th>
+        <th>Transmission</th>
+        <th>Price</th>
+    </tr>
+    {% for car in cars %}
+    <tr>
+        <td>{{ car.full_name }}</td>
+        <td>{{ car.brand }}</td>
+        <td>{{ car.door_num }}</td>
+        <td>{{ car.get_transmission_display }}</td>
+        <td>{{ car.price }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">No cars found.</td></tr>
+    {% endfor %}
+</table>
