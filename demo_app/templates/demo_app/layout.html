@@ -10,8 +10,14 @@
 
 <body>
 <div class="navbar">
-    <a href="{% url 'home' %}" class="navbar-brand">Home</a>
-    <a href="{% url 'database' %}" class="navbar-brand">Database</a>
+    <div class="navbar-left">
+        <a href="{% url 'home' %}" class="navbar-brand">Home</a>
+        <a href="{% url 'database' %}" class="navbar-brand">Database</a>
+    </div>
+    <div class="navbar-right">
+        <a href="{% url 'login' %}" class="navbar-brand">Login</a>
+        <a href="{% url 'signup' %}" class="navbar-brand">Sign Up</a>
+    </div>
 </div>
 
 <div class="body-content">
