@@ -1,0 +1,12 @@
+{% extends "demo_app/layout.html" %}
+{% block title %}
+Login
+{% endblock %}
+{% block content %}
+<form method="post">
+<!-- the .as_p call puts the form into <p> tags automatically -->
+  {% csrf_token %}
+  {{ form.as_p }} 
+  <button type="submit">Submit</button>
+</form>
+{% endblock %}
