@@ -5,5 +5,11 @@ Database Demo
 {% block content %}
 This is a demonstration of a simple database of cars, the form can be used to create new entries in to the database. This should show up in the table below immediately as it is showing all records
 {% include "demo_app/cars_input_form.html" %}
+<h2>All Cars</h2>
 {% include "demo_app/cars_table.html" %}
+{% if user.is_authenticated %}
+    <h2>Filtered Cars Table</h2>
+    {% include "demo_app/cars_search_fields.html" %}
+    {% include "demo_app/cars_table_filter.html" %}
+{% endif %}
 {% endblock %}

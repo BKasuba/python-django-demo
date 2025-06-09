@@ -6,7 +6,8 @@ Login
 <form method="post">
 <!-- the .as_p call puts the form into <p> tags automatically -->
   {% csrf_token %}
-  {{ form.as_p }} 
+  {{ form.as_p }}
+  <input type="hidden" name="next" value="{{ next|default:'/' }}"><!--- next here is used by django framework to redirect the user-->
   <button type="submit">Submit</button>
 </form>
 {% endblock %}
