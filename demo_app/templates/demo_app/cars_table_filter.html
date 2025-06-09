@@ -6,7 +6,7 @@
         <th>Transmission</th>
         <th>Price</th>
     </tr>
-    {% for car in cars %}
+    {% for car in cars_filtered %}
     <tr>
         <td>{{ car.full_name }}</td>
         <td>{{ car.brand }}</td>
@@ -15,6 +15,6 @@
         <td>{{ car.price }}</td>
     </tr>
     {% empty %}
-    <tr><td colspan="5">No cars found.</td></tr>
+    <tr><td colspan="5">No cars found, try entering a different search criteria</td></tr>
     {% endfor %}
 </table>

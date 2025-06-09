@@ -15,8 +15,16 @@
         <a href="{% url 'database' %}" class="navbar-brand">Database</a>
     </div>
     <div class="navbar-right">
-        <a href="{% url 'login' %}" class="navbar-brand">Login</a>
-        <a href="{% url 'signup' %}" class="navbar-brand">Sign Up</a>
+        {% if user.is_authenticated %}
+            <a class="navbar-brand">Welcome, {{ user.username }}! </a>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Log Out</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}?next={{ request.path }}" class="navbar-brand">Login</a> <!-- The next = {{ request.path }} captures the path the request to login was made from, the next is then used to return the user to where they came from -->
+            <a href="{% url 'signup' %}" class="navbar-brand">Sign Up</a>
+        {% endif %}
     </div>
 </div>
 

@@ -7,8 +7,11 @@ def home(request):
     return render(request, "demo_app/home.html")
 
 def database(request):
+    #Filtering
+    query = request.GET.get("search", "")
     form = CarsForm(request.POST or None) # this fetches the form from CarsForm
     cars = Cars.objects.all()
+    cars_filtered = Cars.objects.filter(full_name__icontains=query) if query else None
     if request.method == "POST":
         if form.is_valid():
             message = form.save(commit=False)
@@ -17,7 +20,9 @@ def database(request):
     else:
         return render(request, "demo_app/databases.html", {
             "form":form,
-            "cars":cars}) # here the destination template is chosen and the context of the form and Cars model are passed in so data can be read 
+            "cars":cars,
+            "search":query,
+            "cars_filtered":cars_filtered}) # here the destination template is chosen and the context of the form and Cars model are passed in so data can be read 
 
 def signup(request):
     if request.method == "POST":
